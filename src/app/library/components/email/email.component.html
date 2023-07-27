@@ -1,0 +1,8 @@
+<p class="mb-0 {{ containerClass }}">
+  <mat-form-field class="w-100" *ngIf="formGroup" [formGroup]="formGroup" [appearance]="appearance">
+    <mat-label>{{ label }}</mat-label>
+    <input type="email" matInput formControlName="{{ controlName }}" placeholder="{{ placeholder }}" />
+    <mat-hint *ngIf="hint" align="start"><strong>{{ hint }}</strong></mat-hint>
+    <mat-error>{{ getError() }}</mat-error>
+  </mat-form-field>
+</p>

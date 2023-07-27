@@ -1,0 +1,36 @@
+<div class="row" [formGroup]="form">
+    <div class="col-12 mb-3">
+        <input type="file" name='file' class="file-input" (change)="onFileSelected($event)" #fileUpload>
+        <div class="d-flex align-items-center justify-content-between file-upload border-bottom pb-1">
+            {{fileName || "No file uploaded yet."}}
+            <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
+                <mat-icon>attach_file</mat-icon>
+            </button>
+        </div>
+    </div>
+
+    <div class="col-6" *ngIf="selectedObject">
+        <app-input-control [formGroup]="form" controlName="left" label="Left" [NumberOnly]="true"></app-input-control>
+    </div>
+    <div class="col-6" *ngIf="selectedObject">
+        <app-input-control [formGroup]="form" controlName="top" label="Top" [NumberOnly]="true"></app-input-control>
+    </div>
+
+    <div class="col-6" *ngIf="selectedObject">
+        <app-input-control [formGroup]="shapeForm" controlName="width" label="Width"
+            [NumberOnly]="true"></app-input-control>
+    </div>
+    <div class="col-6" *ngIf="selectedObject">
+        <app-input-control [formGroup]="shapeForm" controlName="height" label="Height"
+            [NumberOnly]="true"></app-input-control>
+    </div>
+
+    <div class="col-12 d-flex align-items-center justify-content-end mt-1">
+        <button class="me-1 " *ngIf="selectedObject" (click)="onRemoveClick()" mat-raised-button color="warn">
+            Remove
+        </button>
+        <button (click)="apply()" mat-raised-button color="primary">
+            {{selectedObject ? 'Update': 'Add Image'}}
+        </button>
+    </div>
+</div>

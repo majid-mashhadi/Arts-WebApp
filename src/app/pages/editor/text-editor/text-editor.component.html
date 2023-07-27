@@ -1,0 +1,39 @@
+<div class="row" [formGroup]="form">
+    <div class="col-12 w-100">
+        <app-input-control [formGroup]="form" controlName="text" label="Text"></app-input-control>
+    </div>
+    <div class="col-8">
+        <app-font-selector class="w-100" [formGroup]="form" controlName="font" label="Font"></app-font-selector>
+    </div>
+    <div class="col-4">
+        <app-input-control [formGroup]="form" controlName="fontSize" label="Font Size"
+            [NumberOnly]="true"></app-input-control>
+    </div>
+    <div class="col-6">
+        <app-input-control class="w-100" [formGroup]="form" controlName="color" label="Color"
+            [(colorPicker)]="textColor"></app-input-control>
+    </div>
+    <div class="col-6">
+        <app-input-control class="w-100" [formGroup]="form" controlName="backgroundColor" label="Background"
+            [(colorPicker)]="backgroundColor"></app-input-control>
+    </div>
+    <div class="col-6">
+        <app-input-control class="w-100" [formGroup]="form" controlName="width" label="Width"
+            [NumberOnly]="true"></app-input-control>
+    </div>
+    <div class="col-6">
+        <app-input-control class="w-100" [formGroup]="form" controlName="height" label="Height" [NumberOnly]="true">
+            <!-- <ng-container slot="end">
+                <mat-icon class="link" (click)="decreaseHeight()">search</mat-icon>
+            </ng-container> -->
+        </app-input-control>
+    </div>
+    <div class="col-12 d-flex align-items-center justify-content-end mt-1">
+        <button class="me-1 " *ngIf="selectedObject" (click)="delete()" mat-raised-button color="warn">
+            Remove
+        </button>
+        <button (click)="apply()" mat-raised-button color="primary" [disabled]="!form.valid">
+            {{selectedObject ? 'Update': 'Add Text'}}
+        </button>
+    </div>
+</div>

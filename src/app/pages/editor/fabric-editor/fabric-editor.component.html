@@ -1,0 +1,125 @@
+<!-- <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6 d-flex justify-content-center">
+        <canvas id="design-studio"></canvas>
+    </div>
+    <div class="col-3"></div>
+</div> -->
+
+<div class="row">
+
+    <div class="col-3">
+        <div class="row">
+            <div class="col-12">
+                Art name
+            </div>
+            <div class="col-12 m-0 p-0 d-flex align-items-center justify-content-between tools">
+                <div class="text-center link tool w-25" [class.active-tool]="tool=='settings'"
+                    (click)="setTool('settings')">
+                    <div>
+                        <span (click)="onSettingsClick()">
+                            <mat-icon>settings</mat-icon>
+                        </span>
+                    </div>
+                    <div>
+                        Settings
+                    </div>
+                </div>
+                <div class="text-center link tool w-25" [class.active-tool]="tool=='save'" (click)="setTool('save')">
+                    <div>
+                        <span (click)="onSaveClick()">
+                            <mat-icon>save</mat-icon>
+                        </span>
+                    </div>
+                    <div>
+                        Save
+                    </div>
+                </div>
+                <div class="text-center link tool w-25" [class.active-tool]="tool=='picker'"
+                    (click)="setTool('picker')">
+                    <div>
+                        <mat-icon>add</mat-icon>
+                    </div>
+                    <div>
+                        Add Object
+                    </div>
+                </div>
+                <!-- <div class="text-center link tool w-25" (click)="setTool('upload')"
+                    [class.active-tool]="tool=='upload'">
+                    <div>
+                        <mat-icon></mat-icon>
+                    </div>
+                    Upload Image
+                </div> -->
+                <div class="text-center link tool w-25" (click)="openExisting()" [class.active-tool]="tool=='load'">
+                    <div>
+                        <mat-icon><span> file_open </span></mat-icon>
+                    </div>
+                    <div>
+                        Use Existing
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 m-0 p-0 mt-2 ps-1 ">
+                {{tool}}
+                <app-object-editor *ngIf="selectedObject || tool=== 'picker'" [selectedObject]="selectedObject"
+                    [canvas]="canvas"></app-object-editor>
+                <app-canvas-setting *ngIf="tool=== 'settings'" [canvas]="canvas"></app-canvas-setting>
+                <app-editor-list-art *ngIf="tool=== 'load'" [canvas]="canvas"></app-editor-list-art>
+            </div>
+        </div>
+
+        <!-- <div>
+            <input type="text" [(ngModel)]="text" placeholder="Enter text" />
+            <button (click)="addText()">Add Text</button>
+        </div>
+        <button (click)="clearCanvas()">Clear</button>
+
+        <input type="file" name='file' class="file-input" (change)="onFileSelected($event)" #fileUpload>
+
+        <div class="file-upload">
+
+            {{fileName || "No file uploaded yet."}}
+
+            <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
+                <mat-icon>attach_file</mat-icon>
+            </button>
+        </div> -->
+
+    </div>
+    <div class="col-6 d-flex justify-content-center">
+
+        <canvas id="design-studio" class="canvas-boundary"></canvas>
+
+        <!-- <div id="main-canvas" class="canvas-boundary" [style.width.px]="canvasSize.width"
+            [style.height.px]="canvasSize.height"> -->
+        <!-- <canvas #canvasRef width="500" height="500" (mousedown)="startDrawing($event)" (mousemove)="draw($event)"
+                (mouseup)="stopDrawing()"></canvas>
+                 -->
+        <!-- 
+                 -->
+
+        <!-- <div #div *ngFor="let item of textItems" class="text-item" id="text-edit-{{item.id}}"
+                [cdkDragStartDelay]="500" cdkDrag cdkDragBoundary=".canvas-boundary"
+                (cdkDragEnded)="dragEnd(div,$event,item)" [style.width.px]="item.width" [style.height.px]="item.height"
+                [style.maxWidth.px]="canvasSize.width" [style.maxHeight.px]="canvasSize.height"
+                [ngStyle]="{ backgroundColor: item.backgroundColor, color: item.color, fontFamily: item.font, fontSize : item.fontSize,}"
+                [style.zIndex]="item.zIndex" [attr.itemId]="item.id" [style.transform]="setItemLocationOnCanvas(item)"
+                (click)="selectText(div, $event, item.id)" (onresize)="onObjectResize($event, item)">
+                {{item.text}}
+            </div>
+            <div #img *ngFor=" let item of imageItems" class="image-item" id="image-edit-{{item.id}}"
+                [cdkDragStartDelay]="500" cdkDrag cdkDragBoundary=".canvas-boundary"
+                (cdkDragEnded)="dragEnd(img,$event,item)" [style.width.px]="item.width" [style.height.px]="item.height"
+                [style.maxWidth.px]="canvasSize.width" [style.maxHeight.px]="canvasSize.height"
+                [style.zIndex]="item.zIndex" [attr.itemId]="item.id" [style.transform]="setItemLocationOnCanvas(item)"
+                (click)="selectImage(img,$event, item.id)" (onresize)="onObjectResize($event, item)">
+                <img [src]="item.src" alt="Uploaded image">
+            </div> -->
+    </div>
+
+    <div class="col-3">
+        <app-editor-alignment-control [canvas]="canvas"></app-editor-alignment-control>
+    </div>
+</div>

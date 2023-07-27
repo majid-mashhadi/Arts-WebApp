@@ -1,0 +1,13 @@
+<mat-form-field class="w-100 {{ containerClass }}" *ngIf="formGroup" [formGroup]="formGroup" [appearance]="appearance">
+  <ng-container matPrefix *ngIf="showPrefix">
+    <ng-content select="[slot=start]"></ng-content>
+  </ng-container>
+  <mat-label>{{label}}</mat-label>
+  <input #input matInput formControlName="{{ controlName }}" placeholder="{{ placeholder }}"
+    (keydown.enter)="keydown()" />
+  <ng-container matSuffix>
+    <ng-content select="[slot=end]"></ng-content>
+  </ng-container>
+  <mat-hint *ngIf="hint" align="start"><strong>{{ hint }}</strong> </mat-hint>
+  <mat-error>{{ getError() }}</mat-error>
+</mat-form-field>

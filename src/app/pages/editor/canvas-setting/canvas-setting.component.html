@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-6">
+        <app-input-control class="w-100" [formGroup]="form" controlName="width" label="Width"
+            [NumberOnly]="true"></app-input-control>
+    </div>
+    <div class="col-6">
+        <app-input-control class="w-100" [formGroup]="form" controlName="height" label="Height" [NumberOnly]="true">
+            <!-- <ng-container slot="end">
+                <mat-icon class="link" (click)="decreaseHeight()">search</mat-icon>
+            </ng-container> -->
+        </app-input-control>
+    </div>
+    <div class="col-6">
+        <app-input-control class="w-100" [formGroup]="form" controlName="backgroundColor" label="Background"
+            [(colorPicker)]="backgroundColor"></app-input-control>
+    </div>
+    <div class="col-12 d-flex justify-content-end">
+        <button mat-raised-button color="primary" (click)="onApplyClick()" [disabled]="!form.valid">Apply</button>
+    </div>
+</div>

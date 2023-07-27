@@ -1,0 +1,66 @@
+<div class="row" class="pe-2" *ngIf="selectedObject">
+    <div class="col-12">
+        <h4>Horizontal Alignment</h4>
+        <div>
+            <button class="border" mat-flat-button (click)="alignObjectHorizontaly('start')" matTooltip="Align left">
+                <mat-icon>align_horizontal_left</mat-icon>
+            </button>
+            <button class="border" mat-flat-button (click)="alignObjectHorizontaly('center')" matTooltip="Align center">
+                <mat-icon>align_horizontal_center</mat-icon>
+            </button>
+            <button class="border" mat-flat-button (click)="alignObjectHorizontaly('end')" matTooltip="Align right">
+                <mat-icon>align_horizontal_right</mat-icon>
+            </button>
+        </div>
+        <div>
+            <button class="border" mat-flat-button (click)="horizontalMove(-10)" matTooltip="Move left">
+                <mat-icon>chevron_left</mat-icon>
+            </button>
+            <button class="border" mat-flat-button (click)="horizontalMove(-1)" matTooltip="Move left">
+                <mat-icon>arrow_back</mat-icon>
+            </button>
+            <button class="border" mat-flat-button (click)="horizontalMove(1)" matTooltip="Move right">
+                <mat-icon>arrow_forward_ios</mat-icon>
+            </button>
+            <button class="border" mat-flat-button (click)="horizontalMove(10)" matTooltip="Move right">
+                <mat-icon>double_arrow</mat-icon>
+            </button>
+        </div>
+    </div>
+    <mat-divider class="mb-2 mt-2"></mat-divider>
+    <div class="col-12">
+        <h4>Vertical Alignment</h4>
+        <div>
+            <button class="border" mat-flat-button (click)="alignObjectVertically('start')" matTooltip="Align top">
+                <mat-icon>align_vertical_top</mat-icon>
+            </button>
+            <button class="border" mat-flat-button (click)="alignObjectVertically('center')" matTooltip="Align center">
+                <mat-icon>align_vertical_center</mat-icon>
+            </button>
+            <button class="border" mat-flat-button (click)="alignObjectVertically('end')" matTooltip="Align bottom">
+                <mat-icon>align_vertical_bottom</mat-icon>
+            </button>
+        </div>
+        <div>
+            <button class="border" mat-flat-button (click)="verticalMove(-10)" matTooltip="Move up">
+                <mat-icon>arrow_upward</mat-icon>
+            </button>
+            <button class="border" mat-flat-button (click)="verticalMove(-1)" matTooltip="Move up">
+                <mat-icon>arrow_upward</mat-icon>
+            </button>
+            <button class="border" mat-flat-button (click)="verticalMove(1)" matTooltip="Move down">
+                <mat-icon>arrow_downward</mat-icon>
+            </button>
+            <button class="border" mat-flat-button (click)="verticalMove(10)" matTooltip="Move down">
+                <mat-icon>arrow_downward</mat-icon>
+            </button>
+        </div>
+    </div>
+    <mat-divider class="mb-2 mt-2"></mat-divider>
+    <div class="col-12">
+        <h6>Z Order</h6>
+        <!-- <button mat-raised-button (click)="rotateImage()">Rotate</button> -->
+        <button class="ms-1" mat-raised-button (click)="sendToBack()">Send To Back</button>
+        <button class="ms-1" mat-raised-button (click)="bringToFront()">Bring To Front</button>
+    </div>
+</div>

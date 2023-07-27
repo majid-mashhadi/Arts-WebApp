@@ -1,0 +1,15 @@
+<div class="row" *ngIf="price">
+    <div class="col-12 mb-2">
+        <span>Crypto Coin: </span><strong><span [innerHtml]="coin"></span></strong>
+    </div>
+    <div class="col-12 mb-2">
+        <span class="me-2"><strong>Disclaimer:</strong></span>
+        <span>{{price?.disclaimer}}</span>
+    </div>
+    <div class="col-12 " *ngFor="let rate of rates">
+        <span [innerHtml]="rate.code"></span>
+        <span [innerHtml]="rate.symbol" class="ms-1"></span>
+        <span [innerHtml]="rate.rate_float"></span>
+        <span [innerHtml]="rate.description" class="ms-2"></span>
+    </div>
+</div>

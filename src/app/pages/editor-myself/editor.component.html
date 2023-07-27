@@ -1,0 +1,147 @@
+<!-- <div class="row">
+    <div class="col-3">
+        <div class="row">
+            <div class="col-12 m-0 p-0 d-flex align-items-center justify-content-between tools">
+                <div class="text-center link tool w-25" [class.active-tool]="tool=='save'" (click)="setTool('save')">
+                    <div>
+                        <span (click)="onSaveClick()">
+                            <mat-icon>save</mat-icon>
+                        </span>
+                    </div>
+                    <div>
+                        Save
+                    </div>
+                </div>
+                <div class="text-center link tool w-25" [class.active-tool]="tool=='picker'"
+                    (click)="setTool('picker')">
+                    <div>
+                        <mat-icon>add</mat-icon>
+                    </div>
+                    <div>
+                        Add Object
+                    </div>
+                </div>
+                <div class="text-center link tool w-25" (click)="setTool('existing')"
+                    [class.active-tool]="tool=='existing'">
+                    <div>
+                        <mat-icon><span> file_open </span></mat-icon>
+                    </div>
+                    <div>
+                        Use Existing
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 m-0 p-0 mt-2 ps-1 ">
+                <app-editor-object-picker *ngIf="tool==='picker'" (update)="updateObject($event)" [canvas]="canvasRef"
+                    [defaultObject]="defaultObject"></app-editor-object-picker>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="col-6 d-flex justify-content-center">
+        <div id="main-canvas" class="canvas-boundary" [style.width.px]="canvasSize.width"
+            [style.height.px]="canvasSize.height">
+            <div #div *ngFor="let item of textItems" class="text-item" id="text-edit-{{item.id}}"
+                [cdkDragStartDelay]="500" cdkDrag cdkDragBoundary=".canvas-boundary"
+                (cdkDragEnded)="dragEnd(div,$event,item)" [style.width.px]="item.width" [style.height.px]="item.height"
+                [style.maxWidth.px]="canvasSize.width" [style.maxHeight.px]="canvasSize.height"
+                [ngStyle]="{ backgroundColor: item.backgroundColor, color: item.color, fontFamily: item.font, fontSize : item.fontSize,}"
+                [style.zIndex]="item.zIndex" [attr.itemId]="item.id" [style.transform]="setItemLocationOnCanvas(item)"
+                (click)="selectText(div, $event, item.id)" (onresize)="onObjectResize($event, item)">
+                {{item.text}}
+            </div>
+            <div #img *ngFor=" let item of imageItems" class="image-item" id="image-edit-{{item.id}}"
+                [cdkDragStartDelay]="500" cdkDrag cdkDragBoundary=".canvas-boundary"
+                (cdkDragEnded)="dragEnd(img,$event,item)" [style.width.px]="item.width" [style.height.px]="item.height"
+                [style.maxWidth.px]="canvasSize.width" [style.maxHeight.px]="canvasSize.height"
+                [style.zIndex]="item.zIndex" [attr.itemId]="item.id" [style.transform]="setItemLocationOnCanvas(item)"
+                (click)="selectImage(img,$event, item.id)" (onresize)="onObjectResize($event, item)">
+                <img [src]="item.src" alt="Uploaded image">
+            </div>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="row" *ngIf="selectedObject">
+            <div class="col-12">
+                <h4>Horizontal Alignment</h4>
+                <div>
+                    <button class="border" mat-flat-button (click)="alignObjectHorizontaly('start')"
+                        matTooltip="Align left">
+                        <mat-icon>align_horizontal_left</mat-icon>
+                    </button>
+                    <button class="border" mat-flat-button (click)="alignObjectHorizontaly('center')"
+                        matTooltip="Align center">
+                        <mat-icon>align_horizontal_center</mat-icon>
+                    </button>
+                    <button class="border" mat-flat-button (click)="alignObjectHorizontaly('end')"
+                        matTooltip="Align right">
+                        <mat-icon>align_horizontal_right</mat-icon>
+                    </button>
+                </div>
+                <div>
+                    <button class="border" mat-flat-button (click)="horizontalMove(-10)" matTooltip="Move left">
+                        <mat-icon>arrow_back</mat-icon>
+                    </button>
+                    <button class="border" mat-flat-button (click)="horizontalMove(-1)" matTooltip="Move left">
+                        <mat-icon>arrow_back</mat-icon>
+                    </button>
+                    <button class="border" mat-flat-button (click)="horizontalMove(1)" matTooltip="Move right">
+                        <mat-icon>arrow_forward</mat-icon>
+                    </button>
+                    <button class="border" mat-flat-button (click)="horizontalMove(10)" matTooltip="Move right">
+                        <mat-icon>arrow_forward</mat-icon>
+                    </button>
+                </div>
+            </div>
+            <div class="col-12">
+                <h4>Vertical Alignment</h4>
+                <div>
+                    <button class="border" mat-flat-button (click)="alignObjectVertically('start')"
+                        matTooltip="Align top">
+                        <mat-icon>align_vertical_top</mat-icon>
+                    </button>
+                    <button class="border" mat-flat-button (click)="alignObjectVertically('center')"
+                        matTooltip="Align center">
+                        <mat-icon>align_vertical_center</mat-icon>
+                    </button>
+                    <button class="border" mat-flat-button (click)="alignObjectVertically('end')"
+                        matTooltip="Align bottom">
+                        <mat-icon>align_vertical_bottom</mat-icon>
+                    </button>
+                </div>
+                <div>
+                    <button class="border" mat-flat-button (click)="verticalMove(-10)" matTooltip="Move up">
+                        <mat-icon>arrow_upward</mat-icon>
+                    </button>
+                    <button class="border" mat-flat-button (click)="verticalMove(-1)" matTooltip="Move up">
+                        <mat-icon>arrow_upward</mat-icon>
+                    </button>
+                    <button class="border" mat-flat-button (click)="verticalMove(1)" matTooltip="Move down">
+                        <mat-icon>arrow_downward</mat-icon>
+                    </button>
+                    <button class="border" mat-flat-button (click)="verticalMove(10)" matTooltip="Move down">
+                        <mat-icon>arrow_downward</mat-icon>
+                    </button>
+                </div>
+            </div>
+            <div class="col-12">
+                <h6>Z dimension</h6>
+                <button class="ms-1" mat-raised-button (click)="sendBack()">Send Back</button>
+                <button class="ms-1" mat-raised-button (click)="bringFront()">Bring Front</button>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #previewImage>
+    <div class="canvas-boundary " [style.width.px]="canvasSize.width" [style.height.px]="canvasSize.height">
+        <img *ngIf="preview" height="100%" width="100%" [src]="preview" alt="preview">
+    </div>
+</ng-template>
+<ng-template #previewActions>
+    <div class="w-100 d-flex justify-content-end">
+        <button mat-raised-button color="primary" (click)="downloadImage()">download</button>
+        <button mat-raised-button color="accent" (click)="closeRefreshDialog()">Close</button>
+    </div>
+</ng-template> -->

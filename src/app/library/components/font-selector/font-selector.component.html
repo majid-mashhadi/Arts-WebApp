@@ -1,0 +1,8 @@
+<mat-form-field class="w-100 {{ containerClass }}" *ngIf="formGroup" [formGroup]="formGroup" [appearance]="appearance">
+    <!-- <mat-form-field> -->
+    <mat-label>Font</mat-label>
+    <mat-select formControlName="{{ controlName }}">
+        <mat-option *ngFor="let font of fonts" [value]="font">{{ font }}</mat-option>
+    </mat-select>
+</mat-form-field>
+<!-- <div [ngStyle]="{fontFamily: selectedFont.value, fontSize: 20}">Sample Text</div> -->

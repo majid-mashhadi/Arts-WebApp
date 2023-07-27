@@ -1,0 +1,4 @@
+<div *ngIf="error" [@fadeInOut] class="error-container mt-1 d-flex w-100 align-items-center justify-content-between">
+    <mat-error [innerHTML]="error"></mat-error>
+    <mat-icon class="link" (click)="clear()" color="primary">close</mat-icon>
+</div>

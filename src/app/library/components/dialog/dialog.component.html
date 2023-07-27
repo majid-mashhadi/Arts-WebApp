@@ -1,0 +1,45 @@
+<div class="m-0">
+    <div class="w-100 d-flex align-items-center justify-content-between">
+        <ng-container *ngIf="headerTemplate; else renderTitle">
+            <div class="w-100 header">
+                <ng-container *ngTemplateOutlet="headerTemplate;"></ng-container>
+            </div>
+        </ng-container>
+        <button *ngIf="config?.hasCloseButton" mat-icon-button aria-label="close dialog" mat-dialog-close>
+            <mat-icon color="primary">close</mat-icon>
+        </button>
+    </div>
+
+    <div class="w-100">
+        <mat-dialog-content class="{{config?.contentClass}}">
+            <ng-container *ngIf="contentTemplate; else renderContent">
+                <ng-container *ngTemplateOutlet="contentTemplate;"></ng-container>
+            </ng-container>
+        </mat-dialog-content>
+    </div>
+    <div class="w-100 border-top">
+        <mat-dialog-actions>
+            <ng-container *ngIf="actionsTemplate; else renderActions">
+                <ng-container *ngTemplateOutlet="actionsTemplate;"></ng-container>
+            </ng-container>
+        </mat-dialog-actions>
+    </div>
+</div>
+<ng-template #renderTitle>
+    <h4 mat-dialog-title [innerHTML]="title"></h4>
+</ng-template>
+<ng-template #renderContent>
+    <div [innerHTML]="data?.content">
+    </div>
+</ng-template>
+
+<ng-template #renderActions>
+    <div class="w-100 d-flex w-100 justify-content-end">
+        <button mat-raised-button *ngIf="hasNoButton" color="accent" (click)="onAction('no')"> No </button>
+        <button mat-raised-button *ngIf="hasCancelButton" color="accent" (click)="onAction('cancel')"> Cancel
+        </button>
+        <button mat-raised-button *ngIf="hasYesButton" color="primary" (click)="onAction('yes')"> Yes </button>
+        <button mat-raised-button *ngIf="hasOkButton" color="primary" (click)="onAction('ok')"> Ok </button>
+        <button mat-raised-button *ngIf="hasCloseButton" color="primary" (click)="onAction('close')"> Ok </button>
+    </div>
+</ng-template>

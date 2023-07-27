@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.link {
+    cursor: pointer;
+}
+
+.overlay-content-center {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.mat-mdc-dialog-content,
+mat-dialog-content {
+    max-height: 85vh !important;
+    padding: 5px 5px 5px 5px !important;
+}

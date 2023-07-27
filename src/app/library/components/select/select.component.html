@@ -1,0 +1,8 @@
+<p class="mb-0 {{ containerClass }}">
+    <mat-form-field class="w-100" *ngIf="formGroup" [formGroup]="formGroup">
+        <mat-label>{{label}}</mat-label>
+        <mat-select formControlName="{{controlName}}">
+            <mat-option *ngFor="let item of items" [value]="item.value">{{item.option}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</p>

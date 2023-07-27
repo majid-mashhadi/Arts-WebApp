@@ -1,0 +1,34 @@
+<div class="row">
+    <div class="col-6">
+        <app-input-control class="w-100" [formGroup]="form" controlName="left" label="Left"
+            [NumberOnly]="true"></app-input-control>
+    </div>
+    <div class="col-6">
+        <app-input-control class="w-100" [formGroup]="form" controlName="top" label="Top" [NumberOnly]="true">
+            <!-- <ng-container slot="end">
+                    <mat-icon class="link" (click)="decreaseHeight()">search</mat-icon>
+                </ng-container> -->
+        </app-input-control>
+    </div>
+    <div class="col-6">
+        <app-input-control class="w-100" [formGroup]="circleForm" controlName="radius" label="radius"
+            [NumberOnly]="true"></app-input-control>
+    </div>
+    <div class="col-6">
+        <app-input-control class="w-100" [formGroup]="form" controlName="strokeWidth" label="Stroke Width"
+            [NumberOnly]="true"></app-input-control>
+    </div>
+    <div class="col-6">
+        <app-input-control class="w-100" [formGroup]="form" controlName="fill" label="Fill Color"
+            [(colorPicker)]="fillColor"></app-input-control>
+    </div>
+    <div class="col-6">
+        <app-input-control class="w-100" [formGroup]="form" controlName="strokeColor" label="Stroke Color"
+            [(colorPicker)]="strokeColor"></app-input-control>
+    </div>
+    <div class="col-12 d-flex justify-content-end">
+        <button *ngIf="selectedObject" class="me-1" mat-raised-button color="warn"
+            (click)="onRemoveClick()">Remove</button>
+        <button mat-raised-button color="primary" (click)="apply()">Apply</button>
+    </div>
+</div>

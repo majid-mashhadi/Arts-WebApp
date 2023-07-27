@@ -1,0 +1,8 @@
+@import '../scss/variables.scss';
+
+.error-container {
+    background-color: $light-gray;
+    min-height: 40px;
+    border-radius: 5px;
+    padding: 5px;
+}

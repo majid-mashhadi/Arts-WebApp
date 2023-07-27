@@ -1,0 +1,5 @@
+<app-input-control #input [formGroup]="form" label="Search" controlName="search" (onEnterKey)="onSearch()">
+    <ng-container slot="end">
+        <mat-icon class="link" (click)="onSearch()">search</mat-icon>
+    </ng-container>
+</app-input-control>

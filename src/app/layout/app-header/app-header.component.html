@@ -1,0 +1,49 @@
+<div class="row header pt-2">
+    <div class="col-2">
+
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item [routerLink]="appRoutes.home">
+                <mat-icon>home</mat-icon>
+                <span>Home</span>
+            </button>
+            <button *ngIf="!isLoggedIn" mat-menu-item [routerLink]="appRoutes.signin">
+                <mat-icon>login</mat-icon>
+                <span>Login</span>
+            </button>
+            <button mat-menu-item [routerLink]="appRoutes.editor">
+                <mat-icon>money</mat-icon>
+                <span>Editor</span>
+            </button>
+
+            <button mat-menu-item [routerLink]="appRoutes.crypto">
+                <mat-icon>money</mat-icon>
+                <span>Crypto</span>
+            </button>
+        </mat-menu>
+    </div>
+    <div class="col-2"></div>
+    <div class="col-4">
+        <app-search-bar></app-search-bar>
+    </div>
+    <div class="col-2"></div>
+    <div class="col-2">
+        <ng-container *ngIf="!isLoggedIn; else showUser">
+            <a (click)="onSignIn()" mat-button>Sign in</a>
+            <button class="border" [routerLink]="appRoutes.signup" mat-flat-button>Sign up</button>
+        </ng-container>
+        <ng-template #showUser>
+            <div class="row">
+                <div class="col-12">
+                    <span class="me-1">Welcome</span>
+                    <span class="me-1">{{user?.firstName}}</span>
+                    <span>{{user?.lastName}}</span>
+                </div>
+                <button (click)="onLogout()" mat-flat-button>Logout</button>
+            </div>
+
+        </ng-template>
+    </div>
+</div>

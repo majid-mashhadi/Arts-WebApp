@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+        <div class="row">
+            <div class="col-12">
+                <app-email-control label="Email" controlName="email" [formGroup]="form">
+                </app-email-control>
+            </div>
+            <div class="col-12">
+                <app-input-control label="First Name" controlName="firstName" [formGroup]="form">
+                </app-input-control>
+            </div>
+        </div>
+        <div class="col-12">
+            <app-input-control label="Last Name" controlName="lastName" [formGroup]="form">
+            </app-input-control>
+        </div>
+        <div class="col-12">
+            <app-password-control label="password" controlName="lastName" [formGroup]="form">
+            </app-password-control>
+        </div>
+        <div class="col-12 justify-content-end d-flex">
+            <button mat-raised-button color="primary" (click)="onCreate()">Create an account</button>
+        </div>
+        <div class="col-12" *ngIf="error">
+            <app-show-error error="{{error}}"></app-show-error>
+        </div>
+    </div>
+    <div class="col-3"></div>
+</div>

@@ -1,0 +1,71 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
+$app-primary-palette: (
+  50: #FBE9E7,
+  100: #FFCCBC,
+  200: #FFAB91,
+  300: #FF8A65,
+  400: #FF7043,
+  500: #FF5722,
+  600: #F4511E,
+  700: #E64A19,
+  800: #D84315,
+  900: #BF360C,
+  A100: #FF9E80,
+  A200 :#FF6E40,
+  A400: #FF3D00,
+  A700: #DD2C00,
+  contrast: (50: #e8eaf6,
+    100: #c5cae9,
+    200: #9fa8da,
+    300: #7986cb,
+    400: #7986cb,
+    500: #7986cb,
+    600: #7986cb,
+    700: #7986cb,
+    800: #7986cb,
+    900: #7986cb,
+  )
+);
+
+$app-accent-palette: (
+  50: #FAFAFA,
+  100: #F5F5F5,
+  200: #EEEEEE,
+  300: #E0E0E0,
+  400: #BDBDBD,
+  500: #9E9E9E,
+  600: #757575,
+  700: #616161,
+  800: #424242,
+  900: #212121,
+
+
+  contrast: (50: #e8eaf6,
+    100: #c5cae9,
+    200: #9fa8da,
+    300: #7986cb,
+    400: #7986cb,
+    500: #7986cb,
+    600: #7986cb,
+    700: #7986cb,
+    800: #7986cb,
+    900: #7986cb,
+  )
+);
+
+$app-primary: mat.define-palette($app-primary-palette, 500);
+$app-accent: mat.define-palette($app-accent-palette, 500); // A200, A100, A400);
+
+// The "warn" palette is optional and defaults to red if not specified.
+$app-warn: mat.define-palette(mat.$red-palette);
+$app-light-theme: mat.define-light-theme((color: (primary: $app-primary,
+        accent: $app-accent,
+        warn: $app-warn,
+      ),
+      typography: mat.define-typography-config(),
+      density: 0,
+    ));
+// @include mat.core-theme($app-light-theme);
+@include mat.all-component-themes($app-light-theme);

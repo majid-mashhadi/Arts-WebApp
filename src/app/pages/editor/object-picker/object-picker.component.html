@@ -1,0 +1,22 @@
+<mat-divider class="mt-2 mb-2"></mat-divider>
+<ng-container *ngIf="type===''">
+    <app-select-control class="w-100" [formGroup]="objectForm" controlName="type" label="Select an object"
+        [items]="objectItems"></app-select-control>
+</ng-container>
+<div class="w-100 mt-3" *ngIf="type">
+    <app-text-editor *ngIf="type=='textbox'" [canvas]="canvas"></app-text-editor>
+    <app-image-object-editor *ngIf="type==='image'" [canvas]="canvas"></app-image-object-editor>
+    <app-image-circle-editor *ngIf="type==='circle'" [canvas]="canvas"></app-image-circle-editor>
+    <app-image-rectangle-editor *ngIf="type==='rect'" [canvas]="canvas"></app-image-rectangle-editor>
+</div>
+<!-- 
+<ng-container >
+    <input type="file" name='file' class="file-input" (change)="onFileSelected($event)" #fileUpload>
+    <div class="file-upload">
+        {{fileName || "No file uploaded yet."}}
+        <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
+            <mat-icon>attach_file</mat-icon>
+        </button>
+    </div>
+
+</ng-container> -->
